@@ -1,0 +1,17 @@
+apply plugin: "io.spring.dependency-management"
+apply plugin: "org.springframework.boot"
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.boot:spring-boot-dependencies:$springBootVersion"
+    }
+}
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-web"
+    compile "org.springframework.amqp:spring-rabbit"
+    testCompile(group: 'org.springframework.boot', name: 'spring-boot-starter-test') {
+        exclude group: 'junit', module: 'junit'
+        exclude group: 'org.hamcrest'
+    }
+}
