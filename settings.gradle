@@ -1,3 +1,4 @@
 rootProject.name = 'contract-testing'
 include 'source-app'
 include 'sink-app'
+include 'messaging-adapter'

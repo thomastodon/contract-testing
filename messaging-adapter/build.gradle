@@ -1,9 +1,4 @@
 buildscript {
     apply from: "$rootDir/gradle/spring-boot.gradle"
-    apply from: "$rootDir/gradle/testing.gradle"
     apply from: "$rootDir/gradle/spring-integration.gradle"
-}
-
-dependencies{
-    compile project(":messaging-adapter")
 }

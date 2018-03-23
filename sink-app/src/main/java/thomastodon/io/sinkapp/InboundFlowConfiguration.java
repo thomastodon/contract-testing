@@ -1,8 +1,11 @@
 package thomastodon.io.sinkapp;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.amqp.core.AmqpAdmin;
+import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.integration.amqp.dsl.Amqp;
@@ -16,6 +19,33 @@ import java.io.IOException;
 
 @Configuration
 public class InboundFlowConfiguration {
+
+    @Bean
+    String queueName(@Value("$rabbitmq.queueName") String queueName) {
+        return queueName;
+    }
+
+    @Bean
+    Queue queue(
+        AmqpAdmin amqpAdmin,
+        String queueName
+    ) {
+        Queue queue = new Queue(queueName);
+        queue.setAdminsThatShouldDeclare(amqpAdmin);
+        return queue;
+    }
+
+    @Bean
+    Binding binding(
+        AmqpAdmin amqpAdmin,
+        String queueName,
+        @Value("${rabbitmq.exchangeName}") String exchangeName,
+        @Value("${rabbitmq.routingKey}") String routingKey
+    ) {
+        Binding binding = new Binding(queueName, Binding.DestinationType.QUEUE, exchangeName, routingKey, null);
+        binding.setAdminsThatShouldDeclare(amqpAdmin);
+        return binding;
+    }
 
     @Bean
     ObjectMapper objectMapper() {
