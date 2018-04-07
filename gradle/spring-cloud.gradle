@@ -1,0 +1,12 @@
+apply plugin: "io.spring.dependency-management"
+apply plugin: "spring-cloud-contract"
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-contract-dependencies:$springCloudContractVersion"
+    }
+}
+
+dependencies {
+    testCompile group: "org.springframework.cloud", name: "spring-cloud-starter-contract-verifier"
+}
