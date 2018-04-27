@@ -1,0 +1,10 @@
+label: should_publish_egg
+input:
+  triggeredBy: nothing()
+outputMessage:
+  sentTo: egg
+  body:
+    color: null
+    creator: duck
+  headers:
+    contentType: application/json
