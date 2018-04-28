@@ -5,8 +5,4 @@ come get 'em;
 :source-highlighter: highlightjs
 :toc: left
 
-== GET /eggs/count
-request:
-include::{snippets}/index/http-request.adoc[]
-response:
-include::{snippets}/index/http-response.adoc[]
+include::{snippets}/index/request-response.adoc[]

@@ -1,0 +1,21 @@
+== {{method}} {{path}}
+
+request:
+[source,http,options="nowrap"]
+----
+{{method}} {{path}} HTTP/1.1
+{{#requestHeaders}}
+{{name}}: {{value}}
+{{/requestHeaders}}
+{{requestBody}}
+----
+
+response:
+[source,http,options="nowrap"]
+----
+HTTP/1.1 {{statusCode}} {{statusReason}}
+{{#responseHeaders}}
+{{name}}: {{value}}
+{{/responseHeaders}}
+{{responseBody}}
+----
