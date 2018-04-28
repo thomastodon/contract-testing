@@ -1,0 +1,12 @@
+= Eggs
+come get 'em;
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+
+== GET /eggs/count
+request:
+include::{snippets}/index/http-request.adoc[]
+response:
+include::{snippets}/index/http-response.adoc[]

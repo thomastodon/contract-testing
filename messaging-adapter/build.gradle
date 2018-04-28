@@ -1,4 +1,3 @@
 buildscript {
-    apply from: "$rootDir/gradle/spring-boot.gradle"
     apply from: "$rootDir/gradle/spring-integration.gradle"
 }
