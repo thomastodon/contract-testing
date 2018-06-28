@@ -2,6 +2,4 @@ server:
   port: 8081
 
 rabbitmq:
-  exchangeName: egg
   queueName: egg-queue
-  routingKey: egg.created

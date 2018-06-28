@@ -1,3 +1,4 @@
 rabbitmq:
+  queueName: egg-queue
   exchangeName: egg
   routingKey: egg.created

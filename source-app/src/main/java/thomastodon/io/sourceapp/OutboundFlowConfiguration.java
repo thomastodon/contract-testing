@@ -3,6 +3,8 @@ package thomastodon.io.sourceapp;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -45,6 +47,11 @@ public class OutboundFlowConfiguration {
                 throw new RuntimeException(e);
             }
         };
+    }
+
+    @Bean
+    AmqpTemplate amqpTemplate(CachingConnectionFactory connectionFactory) {
+        return new RabbitTemplate(connectionFactory);
     }
 
     @Bean
